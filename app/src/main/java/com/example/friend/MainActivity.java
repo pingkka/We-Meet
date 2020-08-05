@@ -79,6 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, FriendRequestActivity.class);
                 startActivity(intent);
                 break;
-        }*///브랜치 바꿔봄
+        }*///브랜치 바꿔봄!!!!!!!!!!!!
     }
 }
