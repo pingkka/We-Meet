@@ -79,6 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, FriendRequestActivity.class);
                 startActivity(intent);
                 break;
-        }*/
+        }*///왜 안되는거냐
     }
 }
