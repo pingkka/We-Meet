@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     public void mOnClick(View v) { // 친구 찾기, 친구 요청 목록
         Intent intent;
 
-        switch(v.getId()) {
+        /*switch(v.getId()) {
             case R.id.friendSearch:
                 intent = new Intent(this, FriendSearchActivity.class);
                 startActivity(intent);
@@ -79,6 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, FriendRequestActivity.class);
                 startActivity(intent);
                 break;
-        }
+        }*/
     }
 }
