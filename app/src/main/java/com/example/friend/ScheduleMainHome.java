@@ -26,20 +26,20 @@ public class ScheduleMainHome extends AppCompatActivity {
         activityScheduleMainHomeBinding.setScheduleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(getApplicationContext(),SetScheduleCalender.class);
+                Intent intent = new Intent(getApplicationContext(),SetScheduleCalender.class);
                 startActivity(intent);
 
                 Intent getCalender = getIntent();
                 date = getCalender.getStringExtra("Date");
                 activityScheduleMainHomeBinding.infromBtn.setText(date);
-                //finish();*/
+                //finish();
             }
         });
 
-        /*activityScheduleMainHomeBinding.setLocationBtn.setOnClickListener(new View.OnClickListener() {
+        activityScheduleMainHomeBinding.setLocationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent intent = new Intent(getApplicationContext(), SetLocationPick.class);
+                Intent intent = new Intent(getApplicationContext(), SetLocationPick.class);
                 startActivity(intent);
             }
         });
@@ -59,6 +59,7 @@ public class ScheduleMainHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-     */
+
+
     }
 }
