@@ -25,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mShowProfile();
+
+        binding.scheduleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ScheduleMainActivity.class);
+                startActivity(intent);
+                //finish();
+            }
+        });
     }
 
     public void mShowProfile() { // 프로필 보여주기

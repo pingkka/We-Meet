@@ -45,7 +45,7 @@ public class ScheduleMainActivity extends AppCompatActivity {
         activityScheduleMainBinding = ActivityScheduleMainBinding.inflate(getLayoutInflater());
         setContentView(activityScheduleMainBinding.getRoot());
 
-        try {
+        /*try {
             PackageInfo info = getPackageManager().getPackageInfo("com.example.schedule", PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
@@ -56,7 +56,7 @@ public class ScheduleMainActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-        } // 카카오 api 키 해시 구하는 과정
+        } // 카카오 api 키 해시 구하는 과정*/
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         activityScheduleMainBinding.scheduleList.setLayoutManager(linearLayoutManager);
