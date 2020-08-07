@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-//캘린더에서 날짜 클릭했을 때 뜨는 팝업창
+//2 캘린더에서 날짜 클릭했을 때 뜨는 팝업창
 public class Calendar_popup extends Activity {
     private int year, month, day;
     private TextView mText_date;
