@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (num%2 == 0) {
 
-            // 친구 목록
+            // 친구
             mProfiles.add(new Profile(0,"친구"));
 
             String[] friends = {"이수연", "이규영", "최지호", "허예원", "박서연", "오아람", "홍승현"};
