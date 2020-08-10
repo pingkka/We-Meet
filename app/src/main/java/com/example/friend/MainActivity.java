@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch(v.getId()) {
             case R.id.friendSearch:
-                intent = new Intent(this, ScheduleMainActivity.class);
+                intent = new Intent(this, FriendSearchActivity.class);
                 startActivity(intent);
                 break;
             case R.id.friendRequest:
