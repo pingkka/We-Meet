@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Calendar_main"></activity>
-        <activity android:name=".Calender_edit"></activity>
+        <activity android:name=".Calendar_main"/>
+        <activity android:name=".Calender_edit"/>
         <activity android:name=".Calendar_add" />
         <activity android:name=".Calendar_popup"
             android:theme="@android:style/Theme.Holo.Dialog" />
