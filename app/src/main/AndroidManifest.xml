@@ -9,8 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Calendar_main"></activity>
+        <activity android:name=".Calender_edit"></activity>
+        <activity android:name=".Calendar_add" />
+        <activity android:name=".Calendar_popup"
+            android:theme="@android:style/Theme.Holo.Dialog" />
+
+        <activity android:name=".InformLocationMap"></activity>
+        <activity android:name=".InformLocation" />
+        <activity android:name=".CalcLocation" />
+        <activity android:name=".MemberPosition" />
+        <activity android:name=".SetLocationCenter" />
+        <activity android:name=".SetLocationPick" />
+        <activity android:name=".SetScheduleCalender" />
+        <activity android:name=".AddNewScheduleActivity" />
         <activity android:name=".ScheduleMainActivity"></activity>
         <activity android:name=".ScheduleMainHome" />
+
         <activity android:name=".FriendSearchActivity" />
         <activity android:name=".FriendRequestActivity" />
         <activity android:name=".MainActivity">
