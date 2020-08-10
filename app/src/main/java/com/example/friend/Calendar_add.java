@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//2-2 일정 추가하는 창
+//2-2 일정 추가
 public class Calendar_add extends AppCompatActivity {
     private EditText edit_name, edit_memo;
     private Button btn_save, btn_cancel;
