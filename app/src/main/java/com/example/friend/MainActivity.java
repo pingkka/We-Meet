@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.friendRequest:
-                intent = new Intent(this, Calendar_main.class);
+                intent = new Intent(this, FriendRequestActivity.class);
                 startActivity(intent);
                 break;
         }
