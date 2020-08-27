@@ -33,6 +33,7 @@ import com.example.friend.databinding.ActivityScheduleMainBinding;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class ScheduleMainActivity extends AppCompatActivity {
     private ActivityScheduleMainBinding activityScheduleMainBinding;
@@ -46,17 +47,13 @@ public class ScheduleMainActivity extends AppCompatActivity {
         setContentView(activityScheduleMainBinding.getRoot());
 
         try {
-            PackageInfo info = getPackageManager().getPackageInfo("com.example.schedule", PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.e("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
+            String result = new CustomTask().execute("id","id","name","loadSche").get();
+
+        } catch (ExecutionException e) {
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        } // 카카오 api 키 해시 구하는 과정
+        }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         activityScheduleMainBinding.scheduleList.setLayoutManager(linearLayoutManager);
@@ -65,15 +62,16 @@ public class ScheduleMainActivity extends AppCompatActivity {
         scheduleAdapter = new ScheduleAdapter(ScheduleMainActivity.this, schedules);
         activityScheduleMainBinding.scheduleList.setAdapter(scheduleAdapter);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(activityScheduleMainBinding.scheduleList.getContext(),linearLayoutManager.getOrientation());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(activityScheduleMainBinding.scheduleList.getContext(), linearLayoutManager.getOrientation());
         activityScheduleMainBinding.scheduleList.addItemDecoration(dividerItemDecoration);
+
 
         activityScheduleMainBinding.scheduleList.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), activityScheduleMainBinding.scheduleList, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
                 Schedule schedule = schedules.get(position);
-                Intent intent = new Intent(getApplicationContext(),ScheduleMainHome.class);
-                intent.putExtra("schedule_name",schedule.getSchedule_name());
+                Intent intent = new Intent(getApplicationContext(), ScheduleMainHome.class);
+                intent.putExtra("schedule_name", schedule.getSchedule_name());
                 startActivity(intent);
             }
 
@@ -86,7 +84,7 @@ public class ScheduleMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ScheduleMainActivity.this);
-                View view = LayoutInflater.from(ScheduleMainActivity.this).inflate(R.layout.activity_add_new_schedule,null,false);
+                View view = LayoutInflater.from(ScheduleMainActivity.this).inflate(R.layout.activity_add_new_schedule, null, false);
                 builder.setView(view);
 
                 final Button finish_btn = (Button) view.findViewById(R.id.finish_btn);
@@ -101,14 +99,14 @@ public class ScheduleMainActivity extends AppCompatActivity {
                         String schedule_name = edit_schedule_name.getText().toString();
 
                         Schedule schedule = new Schedule(schedule_name);
-                        schedules.add(0,schedule);
+                        schedules.add(0, schedule);
                         scheduleAdapter.notifyItemInserted(0);
                         // 서버에도 저장하기
 
                         dialog.dismiss();
 
-                        Intent intent = new Intent(getApplicationContext(),ScheduleMainHome.class);
-                        intent.putExtra("schedule_name",schedule_name);
+                        Intent intent = new Intent(getApplicationContext(), ScheduleMainHome.class);
+                        intent.putExtra("schedule_name", schedule_name);
                         startActivity(intent);
                     }
                 });

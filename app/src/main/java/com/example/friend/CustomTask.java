@@ -11,21 +11,24 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.sql.RowSetWriter;
+
 class CustomTask extends AsyncTask<String, Void, String> {
     String sendMsg, receiveMsg;
+
     @Override
     protected String doInBackground(String... strings) {
         try {
             String str;
-            URL url = new URL("http://223.194.158.38:8080/scheduleAPP/scheduleList.jsp");
+            URL url = new URL("http://192.168.43.187:8080/server/DBserver.jsp");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             conn.setRequestMethod("POST");
             OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-            sendMsg = "id="+strings[0]+"&pwd="+strings[1]+"&name="+strings[2]+"&type="+strings[3];
+            sendMsg = "id=" + strings[0] + "&pwd=" + strings[1] + "&name=" + strings[2] + "&type=" + strings[3];
             osw.write(sendMsg);
             osw.flush();
-            if(conn.getResponseCode() == conn.HTTP_OK) {
+            if (conn.getResponseCode() == conn.HTTP_OK) {
                 InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "UTF-8");
                 BufferedReader reader = new BufferedReader(tmp);
                 StringBuffer buffer = new StringBuffer();
@@ -35,7 +38,7 @@ class CustomTask extends AsyncTask<String, Void, String> {
                 receiveMsg = buffer.toString();
 
             } else {
-                Log.i("통신 결과", conn.getResponseCode()+"에러");
+                Log.i("통신 결과", conn.getResponseCode() + "에러");
             }
 
         } catch (MalformedURLException e) {
