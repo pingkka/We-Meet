@@ -14,6 +14,10 @@ public class Schedule {
 
     }
 
+    public Schedule(String sche_name) {
+        this.sche_name = sche_name;
+    }
+
     public Schedule(int sche_id, String id, String sche_name, Date date, String location, String participants) {
         this.sche_id = sche_id;
         this.id = id;

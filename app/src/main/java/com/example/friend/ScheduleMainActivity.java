@@ -39,6 +39,7 @@ public class ScheduleMainActivity extends AppCompatActivity {
     private ActivityScheduleMainBinding activityScheduleMainBinding;
     private ArrayList<Schedule> schedules;
     private ScheduleAdapter scheduleAdapter;
+    String[] sche_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class ScheduleMainActivity extends AppCompatActivity {
 
         try {
             String result = new CustomTask().execute("id","id","name","loadSche").get();
-
+            sche_list = result.split("\t");
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -62,6 +63,9 @@ public class ScheduleMainActivity extends AppCompatActivity {
         scheduleAdapter = new ScheduleAdapter(ScheduleMainActivity.this, schedules);
         activityScheduleMainBinding.scheduleList.setAdapter(scheduleAdapter);
 
+        schedules.add(0, new Schedule(sche_list[0]));
+        scheduleAdapter.notifyItemInserted(0);
+
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(activityScheduleMainBinding.scheduleList.getContext(), linearLayoutManager.getOrientation());
         activityScheduleMainBinding.scheduleList.addItemDecoration(dividerItemDecoration);
 
@@ -71,7 +75,7 @@ public class ScheduleMainActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Schedule schedule = schedules.get(position);
                 Intent intent = new Intent(getApplicationContext(), ScheduleMainHome.class);
-                intent.putExtra("schedule_name", schedule.getSchedule_name());
+                intent.putExtra("schedule_name", schedule.getSche_name());
                 startActivity(intent);
             }
 
