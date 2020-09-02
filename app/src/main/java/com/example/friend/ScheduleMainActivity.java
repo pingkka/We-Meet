@@ -47,14 +47,14 @@ public class ScheduleMainActivity extends AppCompatActivity {
         activityScheduleMainBinding = ActivityScheduleMainBinding.inflate(getLayoutInflater());
         setContentView(activityScheduleMainBinding.getRoot());
 
-        try {
+        /*try {
             String result = new CustomTask().execute("id","id","name","loadSche").get();
             schedule_list = result.split("\t");
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         activityScheduleMainBinding.scheduleList.setLayoutManager(linearLayoutManager);
